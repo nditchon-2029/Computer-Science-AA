@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Nicko S. Ditchon" content="Member 1">
+	<meta name="Nicko S. Ditchon" content="Member 1">
+	<meta name="Nicko S. Ditchon" content="Member 1">
+    <title>LIGTAS | Disaster Preparedness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #444;
+            background-color: #f0f0f0; 
+        }
+
+        .hero-section {
+            position: relative;
+            height: 600px; 
+            color: white;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1; 
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('images/background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 10%; 
+            z-index: -1; 
+        }
+
+        .hero-base-separator {
+            height: 40px; 
+            background-color: #f0f0f0; 
+            margin-top: 500px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            z-index: -2; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 95%; 
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .logo-img {
+            height: 40px; 
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #e0e0e0; 
+        }
+
+        .nav-links {
+             padding-right: 20px; 
+        }
+        
+        .nav-links a {
+            color: #e0e0e0; 
+            text-decoration: none;
+            margin-left: 80px; 
+            font-size: 1.6em; 
+            font-weight: 400;
+            opacity: 0.9;
+            transition: opacity 0.2s, color 0.2s, text-shadow 0.2s; 
+        }
+        
+        .nav-links a:hover {
+            opacity: 1.0;
+            color: #fff; /* Brighten to pure white */
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); 
+            text-decoration: underline; 
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%; 
+            margin-top: 140px; 
+        }
+
+        .subtitle {
+            font-size: 1.5em; 
+            font-weight: 400;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em; 
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .content-section {
+            background-color: #f0f0f0;
+            padding: 50px 0; 
+            display: flex;
+            justify-content: center;
+            position: relative; 
+            min-height: 300px;
+            z-index: 2; 
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            width: 95%; 
+            max-width: 1300px; 
+            margin-top: -90px; 
+            position: static; 
+            top: auto; 
+            padding-top: 10px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px; 
+            overflow: visible; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none; 
+            color: inherit; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .card:hover {
+            transform: scale(1.03); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); 
+            cursor: pointer;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; 
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .card-title {
+            padding: 15px 10px;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #333; 
+            background-color: white; 
+            width: 80%;
+            margin: 15px auto; 
+            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 95%; 
+            margin: 0 auto;
+            padding: 2px 0; 
+            background-color: #f0f0f0; 
+            border-top: 1px solid #ccc;
+            font-size: 0.85em;
+            color: #777; 
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        @media (max-width: 992px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+                position: static; 
+                margin-top: 0;
+                padding-top: 20px;
+            }
+            .hero-section {
+                height: 400px; 
+            }
+            .hero-base-separator {
+                display: none;
+            }
+            .content-section {
+                padding-top: 0;
+                min-height: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .nav-links {
+                margin-top: 15px;
+                padding-right: 0;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+            .main-title {
+                font-size: 2em;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                width: 85%;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 95%;
+            }
+            .footer-right {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="LIGTAS Logo" class="logo-img">
+                <span class="logo-text">LIGTAS</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="preparedness_tips.html">Preparedness Tips</a>
+                <a href="emergency_kits.html">Emergency Kits</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+        
+        <div class="hero-content">
+            <p class="subtitle">Local Information on Guidance, Tips, Awareness, and Safety</p>
+            <h1 class="main-title">DISASTER AWARENESS & PREPAREDNESS</h1>
+        </div>
+        
+        <div class="hero-base-separator"></div>
+    </header>
+
+    <main class="content-section">
+        <div class="card-grid">
+            
+            <a href="fire_safety.html" class="card">
+                <img class="card-image" src="images/fire_safety.jpg" alt="A depiction of fire or a fire extinguisher.">
+                <div class="card-title">Fire Safety</div>
+            </a>
+
+            <a href="earthquake_safety.html" class="card">
+                <img class="card-image" src="images/earthquake_safety.jpg" alt="A depiction of a cracked ground or a seismograph.">
+                <div class="card-title">Earthquake Safety</div>
+            </a>
+
+            <a href="landslide_safety.html" class="card">
+                <img class="card-image" src="images/landslide_safety.jpg" alt="A depiction of a hill sliding or falling rocks.">
+                <div class="card-title">Landslide Safety</div>
+            </a>
+
+            <a href="flood_safety.html" class="card">
+                <img class="card-image" src="images/flood_safety.jpg" alt="A depiction of rising water or a rescue boat.">
+                <div class="card-title">Flood Safety</div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-left">
+            LIGTAS | Disaster Preparedness Project<br>
+            © 2025 · All Rights Reserved
+        </div>
+        <div class="footer-right">
+            Created by: Ditchon, Dumanon, Gavia<br>
+            [Grade 9 · Barium]
+        </div>
+    </footer>
+
+</body>
+</html>
